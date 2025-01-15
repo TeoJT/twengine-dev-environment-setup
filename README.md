@@ -6,7 +6,7 @@ A tool used to automatically set up your entire work environment for developing 
 
 Super easy!
 
-First, clone/download this repository (duh)
+First, clone/[download](https://github.com/TeoJT/twengine-dev-environment-setup/releases/download/1.0/twengine-dev-environment-setup.zip) this repository (duh)
 
 Then, [install Python](https://www.python.org/downloads/) on your machine if not installed already. If you're using Windows, you can use either native Windows Python or Python in Windows Subsystem for Linux.
 
