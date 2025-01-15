@@ -14,6 +14,8 @@ Then, run `python3 setup.py`.
 
 The installer will run you through the rest.
 
+Once the installer has finished running, go to the Processing folder and run Processing to begin coding. Have fun!
+
 ## What it does
 
 1. Download and extract the Processing IDE
