@@ -216,6 +216,8 @@ def is_wsl():
                 return True
     return False
 
+
+
 # Install processing
 if (True):
     print(color.CYAN+"Install Processing"+color.NONE)
@@ -223,7 +225,7 @@ if (True):
         if (os.name == "nt"):
             download_file(PROCESSING_DOWNLOAD_URL_WINDOWS, install_path+'processing.zip')
         elif (os.name == "posix" and is_wsl()):
-            download_file(PROCESSING_DOWNLOAD_URL_WINDOWS, install_path+'processing.tgz')
+            download_file(PROCESSING_DOWNLOAD_URL_WINDOWS, install_path+'processing.zip')
         elif (os.name == "posix" and not is_wsl()):
             download_file(PROCESSING_DOWNLOAD_URL_LINUX, install_path+'processing.tgz')
         else:
@@ -241,7 +243,7 @@ if (True):
         if (os.name == "nt"):
             extract_zip(install_path+'processing.zip', PROCESSING_DIR)
         elif (os.name == "posix" and is_wsl()):
-            extract_tgz(install_path+'processing.zip', PROCESSING_DIR)
+            extract_zip(install_path+'processing.zip', PROCESSING_DIR)
         elif (os.name == "posix" and not is_wsl()):
             extract_tgz(install_path+'processing.tgz', PROCESSING_DIR)
         else:
