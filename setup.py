@@ -6,11 +6,11 @@ import zipfile
 import shutil
 import tarfile
 
-debug_skip_downloading = True
+debug_skip_downloading = False
 
-PROCESSING_DOWNLOAD_URL_WINDOWS = 'https://github.com/processing/processing4/releases/download/processing-1304-4.4.4/processing-4.4.4-windows-x64-portable.zip'
+PROCESSING_DOWNLOAD_URL_WINDOWS = 'https://github.com/processing/processing4/releases/download/processing-1305-4.4.5/processing-4.4.5-windows-x64-portable.zip'
 
-PROCESSING_DOWNLOAD_URL_LINUX = 'https://github.com/processing/processing4/releases/download/processing-1304-4.4.4/processing-4.4.4-linux-x64-portable.zip'
+PROCESSING_DOWNLOAD_URL_LINUX = 'https://github.com/processing/processing4/releases/download/processing-1305-4.4.5/processing-4.4.5-linux-x64-portable.zip'
 
 
 # Prompt colors
@@ -59,6 +59,22 @@ def error(message):
         else:
             endString = len(message)
         print(message[endStringBefore+1:endString])
+
+def url_check(url):
+    try:
+        response = urllib.request.urlopen(url)
+        status_code = response.getcode()
+        if status_code == 200:
+            return # Nothing for now.
+        else:
+            error(f"URL check failed; {url} responded with {status_code}.")
+            exit(1)
+    except urllib.error.HTTPError as e:
+        error("URL check failed; "+url+" responded with "+str(e.code)+" ("+e.reason+")")
+        exit(1)
+    except urllib.error.URLError as e:
+        error("URL check failed; "+url+" URLError - "+e.reason+"")
+        exit(1)
 
 def download_file(url, destination):
     # Open the URL
@@ -183,6 +199,10 @@ check_dir(ICONS_DIR)
 check_dir(LIB_DIR)
 check_dir(THEME_DIR)
 # check_dir(THUMB_DIR)
+
+url_check(PROCESSING_DOWNLOAD_URL_WINDOWS)
+url_check(PROCESSING_DOWNLOAD_URL_LINUX)
+
 
 # TODO: Timeway now installs at a set path with the MSI installers. There is no need for this path selection code.
 # 1. Get install path
